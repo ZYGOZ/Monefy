@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Monefy.View.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Monefy.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="440" MinHeight="500" MinWidth="440" MaxHeight="500" MaxWidth="440">
+    <Grid Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Monefy" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" Margin="15" Background="Transparent" Foreground="Black" FontWeight="Bold" FontFamily="Fake Receipt"/>
+
+        <ListBox  ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Grid.Row="1" FontSize="15" Margin="10" Background="Transparent" Foreground="Black" FontWeight="Bold" FontFamily="Fake Receipt" BorderBrush="#FF1A1A1A" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+
+                        <Grid Grid.Row="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding Icon}" Stretch="Fill" Margin="7" Height="75" Width="65"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Content="Name :" Margin="0,0,5,0" FontSize="16" Background="Transparent" Foreground="Black" FontWeight="Bold" FontFamily="Fake Receipt"/>
+                                <Label Grid.Row="1" Content="Costs :" Margin="0,0,5,0" FontSize="16" Background="Transparent" Foreground="Black" FontWeight="Bold" FontFamily="Fake Receipt"/>
+
+                                <TextBox Text="{Binding Name}" IsReadOnly="True" Grid.Column="1" Grid.Row="0" Margin="10" Background="Transparent" FontWeight="Bold" FontFamily="Fake Receipt" FontSize="16" Foreground="Black" VerticalAlignment="Center" BorderBrush="Black"/>
+                                <TextBox Text="{Binding Costs}" IsReadOnly="True" Grid.Column="1" Grid.Row="1" Margin="10" Background="Transparent" FontWeight="Bold" FontFamily="Fake Receipt" FontSize="16" Foreground="Black" VerticalAlignment="Center" BorderBrush="Black"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Command="{Binding AddButton}" Grid.Row="2" Margin="30" Content="Add" FontSize="20" FontFamily="Fake Receipt" FontWeight="Bold" Foreground="Black" Background="Transparent" OpacityMask="Black"/>
+    </Grid>
+</UserControl>
